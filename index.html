@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lì xì Tết</title>
+<style>
+  body {
+  
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 414px;
+    height: 896px;
+    background-color: #9b000b;
+    margin: 0;
+  }
+  
+  .red-envelope {
+    position: relative;
+    max-width: 100%;
+
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+
+  
+  .lixi {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    width: 500px;
+  }
+  
+  .money{
+    position: absolute;
+    top: 0;
+    transform: rotate(90deg);
+    margin-left: 16px;
+    width: 454px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    transition: top 0.5s ease;
+  }
+  .red-envelope.clicked .money {
+    top: -60px;
+  }
+  .hidden {
+    display: none;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="red-envelope" onclick="openRedEnvelope()">
+  <img src="./baolixi.png" class="lixi"/>
+  <img class="money"/>
+</div>
+
+<script>
+var displayedImages = []; // Mảng lưu trữ các URL hình ảnh đã hiển thị
+
+function openRedEnvelope() {
+  var moneyImage = document.querySelector('.money');
+  
+  // Kiểm tra xem có hình ảnh mới để hiển thị hay không
+  var randomDenomination;
+  do {
+    randomDenomination = getRandomDenomination();
+  } while (displayedImages.includes(randomDenomination.money)); // Kiểm tra nếu hình ảnh đã được hiển thị
+  
+  var imageUrl = randomDenomination.money;
+  
+  // Đặt URL hình ảnh và thêm vào mảng hình ảnh đã hiển thị
+  moneyImage.src = imageUrl;
+  displayedImages.push(imageUrl);
+}
+
+function getRandomDenomination() {
+  var denominations = [
+    {money: "https://upload.wikimedia.org/wikipedia/vi/7/7c/%C4%90%E1%BB%93ng_b%E1%BA%A1c_5000_%C4%91%E1%BB%93ng.jpg"},
+    {money: "https://i.pinimg.com/originals/40/02/59/40025923b76a31a613831d6a62ceed28.jpg"},
+    {money: "https://xosodaicat.com/storage/giai-ma-4-2020/tien/nam-mo-thay-tien-10-nghin-danh-con-gi.JPG"},
+    {money: "https://i.pinimg.com/originals/79/c1/ff/79c1ff383f0e2b6adaa358f00d42b1d9.png"},
+    {money: "https://baoxaydung.com.vn/stores/news_dataimages/vananh/072016/06/10/100839baoxaydung_image009.jpg"},
+    {money: "https://i.pinimg.com/originals/16/37/f1/1637f1520d3ea80f499dc9e6bf21c6c9.png"},
+    {money: "https://en.numista.com/catalogue/photos/viet_nam/5e9e97d1456249.52677947-original.jpg"},
+    {money: "https://upload.wikimedia.org/wikipedia/vi/a/a9/100nghins.jpg"}
+  ];
+  return denominations[Math.floor(Math.random() * denominations.length)];
+}
+
+</script>
+
+</body>
+</html>
