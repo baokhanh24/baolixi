@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lì xì Tết</title>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>s
 <style>
   body {
   
@@ -14,16 +14,15 @@
     align-items: center;
     width: 414px;
     height: 896px;
- 
+    background-color: #9b000b;
     margin: 0;
   }
   
   .red-envelope {
     position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #9b000b;
-   
+    max-width: 100%;
+
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,27 +36,23 @@
     font-weight: bold;
     font-size: 24px;
     width: 500px;
-    align-items: center;
-    z-index: 2;
   }
   
   .money{
     position: absolute;
-    top: 160px;
+    top:-60px;
     transform: rotate(90deg);
     margin-left: 16px;
     width: 454px;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
-    
+    z-index: -1;
+   
   }
-  
+
  
-  .hidden {
-    display: none;
-    }
+  
     
 </style>
 </head>
@@ -65,7 +60,7 @@
 
 <div class="red-envelope" onclick="openRedEnvelope()">
   <img src="./baolixi.png" class="lixi"/>
-  <img  class="money"/>
+  <img class="money"/>
 </div>
 
 <script>
@@ -85,11 +80,7 @@ function openRedEnvelope() {
   // Đặt URL hình ảnh và thêm vào mảng hình ảnh đã hiển thị
   moneyImage.src = imageUrl;
   displayedImages.push(imageUrl);
-  confetti({
-  particleCount: 100,
-  spread: 70,
-  origin: {x:0.55 , y: 0.5}
-});
+
 }
 
 function getRandomDenomination() {
